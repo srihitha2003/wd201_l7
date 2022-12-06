@@ -5,7 +5,10 @@
   "scripts": {
     "start": "node index.js",
     "start:prod":"node index.js && npx sequelize-cli db:migrate",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest":"NODE_ENV=test npx sequelize-cli db:drop",
+    "test":"NODE_ENV=test jest --detectOpenHandles",
+    "prepare":"husky install"
+
   },
   
   "lint-staged": {
@@ -14,6 +17,7 @@
       "prettier --write ."
     ]
   },
+  "keywords":[],
   "author": "",
   "license": "ISC",
   "dependencies": {
